@@ -14,14 +14,14 @@ app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//const pg = require('pg');
+const mysql = require('mysql');
 const db = require('./app/models');
 
 
 //drop existing tables and re-sync database during development
-// db.sequelize.sync({ force: true }).then(() => {
-//     console.log("Drop and re-sync db.");
-//   });
+db.sequelize.sync({ force: true }).then(() => {
+    console.log("Drop and re-sync db.");
+  });
 
 //routes
 app.get('/', (request, response) => {
